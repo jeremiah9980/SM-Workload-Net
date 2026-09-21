@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Your Board — Workload Net</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="../assets/board.css">
+</head>
+<body>
+<div class="wrap">
+
+  <header class="masthead">
+    <div class="repo">
+      <a class="crumb" href="../index.html">&larr; SM Workload Net</a>
+      <span class="slash">&middot;</span><span id="handle"></span>
+      <span class="sample-pill" id="samplepill" hidden>Sample data</span>
+    </div>
+    <h1 id="who">&nbsp;</h1>
+    <p class="standfirst">Work found in mail, Teams, meetings and Confluence that has no CS issue, no Freshservice ticket, no change record, or no current documentation behind it. Clear a row by creating the record &mdash; the next pass drops it off this page.</p>
+    <div class="mast-meta">
+      <span>Role <b id="role"></b></span>
+      <span>Coverage <b id="coverage"></b></span>
+      <span>Last pass <b id="asof">&mdash;</b></span>
+    </div>
+  </header>
+
+  <section id="summary">
+    <div class="sec-head">
+      <h2>Where you stand</h2><div class="sec-rule"></div>
+    </div>
+    <div class="strip" id="strip"></div>
+  </section>
+
+  <section id="tickets">
+    <div class="sec-head">
+      <h2>Needs a ticket</h2><div class="sec-rule"></div>
+      <span class="sec-count" id="c-tickets"></span>
+    </div>
+    <p class="sec-note" id="n-tickets"></p>
+    <div class="queue" id="q-tickets"></div>
+  </section>
+
+  <section id="changes">
+    <div class="sec-head">
+      <h2>Should go to CMB</h2><div class="sec-rule"></div>
+      <span class="sec-count" id="c-changes"></span>
+    </div>
+    <p class="sec-note" id="n-changes"></p>
+    <div class="queue" id="q-changes"></div>
+  </section>
+
+  <section id="docs">
+    <div class="sec-head">
+      <h2>Docs going stale</h2><div class="sec-rule"></div>
+      <span class="sec-count" id="c-docs"></span>
+    </div>
+    <p class="sec-note" id="n-docs"></p>
+    <div class="queue" id="q-docs"></div>
+  </section>
+
+  <section id="mypages">
+    <div class="sec-head">
+      <h2>My pages</h2><div class="sec-rule"></div>
+      <span class="sec-count">standing</span>
+    </div>
+    <p class="sec-note">The Claude pages that feed this board. They hold the detail; this page holds only what still has no record behind it.</p>
+    <div class="pagerow" id="pages"></div>
+  </section>
+
+  <footer>
+    <span>Texas Mutual &middot; Systems Management</span>
+    <span>people/_seat.html people/jeremiah-cargill.html</span>rarr; rename me</span>
+  </footer>
+</div>
+
+<!-- ============================================================
+     YOUR BOARD — the twice-weekly pass rewrites this block.
+     Edit by hand any time; it is plain JSON.
+     sev is implied by the queue, so items only carry content.
+     ============================================================ -->
+<script type="application/json" id="board-data">
+{
+  "name": "Your Name",
+  "github": "your-handle",
+  "role": "Your title",
+  "coverage": "What you cover on the SM team",
+  "updated": "2026-09-17T08:00:00-05:00",
+  "sample": false,
+  "pages": [
+    {
+      "title": "Attention Deck",
+      "cadence": "Daily",
+      "url": "",
+      "sources": [
+        "Jira",
+        "Freshservice",
+        "Outlook",
+        "Teams",
+        "Confluence"
+      ]
+    },
+    {
+      "title": "Ticket Capture Ledger",
+      "cadence": "Weekdays 16:30 CT",
+      "url": "",
+      "sources": [
+        "Outlook",
+        "Teams",
+        "Calendar",
+        "Jira",
+        "Freshservice"
+      ]
+    },
+    {
+      "title": "Systems Management Standing",
+      "cadence": "Standing",
+      "url": "",
+      "sources": [
+        "Jira",
+        "Freshservice"
+      ]
+    }
+  ],
+  "gaps": {
+    "tickets": [],
+    "changes": [],
+    "docs": []
+  }
+}
+</script>
+<script src="../assets/board.js"></script>
+</body>
+</html>

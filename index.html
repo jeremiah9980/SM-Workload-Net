@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SM Workload Net</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="assets/board.css">
+</head>
+<body>
+<div class="wrap">
+
+  <header class="masthead">
+    <div class="repo">
+      <span>Texas-Mutual-Proving-Ground</span><span class="slash">/</span><b>TXM-SM</b>
+      <span class="slash">&middot;</span><span>GitHub Pages</span>
+    </div>
+    <h1>SM Workload Net</h1>
+    <p class="standfirst">Work arrives scattered across email, Teams, Jira, Freshservice and Confluence, and some of it never becomes a ticket. Each teammate has a board here showing the work that was detected but has nothing tracking it &mdash; so nobody has to hunt five systems to find out what they are missing.</p>
+    <div class="mast-meta">
+      <span>Team <b>Systems Management / CorpIT Svc</b></span>
+      <span>Jira <b>txmutual.atlassian.net &middot; CS</b></span>
+      <span>Tickets <b>Freshservice &middot; System Management</b></span>
+      <span>Last pass <b id="asof">&mdash;</b></span>
+    </div>
+  </header>
+
+  <section id="gaps">
+    <div class="sec-head">
+      <h2>Open gaps</h2><div class="sec-rule"></div>
+      <span class="sec-count" id="seatcount"></span>
+    </div>
+    <p class="sec-note">Totals across every claimed seat. A gap is work the scan found evidence of that has no CS issue, no Freshservice ticket, no change record, or no current documentation behind it.</p>
+    <div class="strip" id="strip"></div>
+  </section>
+
+  <section id="team">
+    <div class="sec-head">
+      <h2>The team</h2><div class="sec-rule"></div>
+      <span class="sec-count">one board each</span>
+    </div>
+    <p class="sec-note">Each teammate owns one file. Editing your own board never touches anyone else&rsquo;s, so two people can push at the same time without a conflict.</p>
+    <div class="seats" id="seats"></div>
+  </section>
+
+  <section id="how">
+    <div class="sec-head">
+      <h2>How the net works</h2><div class="sec-rule"></div>
+      <span class="sec-count">4 layers</span>
+    </div>
+    <p class="sec-note">The layers run in order &mdash; nothing reaches a board until it has been read, cross-referenced, and found to be missing a record.</p>
+    <div class="layers">
+      <div class="layer">
+        <span class="layer-n">01</span>
+        <h4>Connect</h4>
+        <p>Read access into the places work starts: Microsoft 365 mail, calendar and Teams, Jira, Confluence, Freshservice and SharePoint.</p>
+      </div>
+      <div class="layer">
+        <span class="layer-n">02</span>
+        <h4>Watch &amp; reason</h4>
+        <p>One artifact triages mail into candidate work items. Another cross-references those against Jira CS and the Freshservice System Management queue to find work that is real but untracked.</p>
+      </div>
+      <div class="layer">
+        <span class="layer-n">03</span>
+        <h4>Act on a cadence</h4>
+        <p>A frequent pass flags anything urgent. Twice a week a deeper pass drafts the suggested CS issues, the change requests that belong at CMB, and the Confluence pages that have drifted.</p>
+      </div>
+      <div class="layer">
+        <span class="layer-n">04</span>
+        <h4>Land on a board</h4>
+        <p>Each pass rewrites the <code>board-data</code> block in one teammate&rsquo;s page and pushes. GitHub Actions republishes the site within a minute.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="claim">
+    <div class="sec-head">
+      <h2>Claim your seat</h2><div class="sec-rule"></div>
+      <span class="sec-count">3 steps</span>
+    </div>
+    <p class="sec-note">Do this once. It is also the exercise &mdash; your first branch, your first commit, your first look at a rendered diff.</p>
+    <div class="layers">
+      <div class="layer">
+        <span class="layer-n">01</span>
+        <h4>Copy the template</h4>
+        <p>Duplicate <code>people/_seat.html</code> and rename it to your GitHub handle, e.g. <code>people/jdoe.html</code>.</p>
+      </div>
+      <div class="layer">
+        <span class="layer-n">02</span>
+        <h4>Fill in your block</h4>
+        <p>Edit the <code>board-data</code> JSON at the bottom of your new file: your name, handle, coverage, and the three Claude pages you run.</p>
+      </div>
+      <div class="layer">
+        <span class="layer-n">03</span>
+        <h4>Take a seat</h4>
+        <p>In <code>index.html</code>, replace one empty <code>{}</code> in the <code>seats</code> list with your entry, then commit. Your card appears on this page.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>Texas Mutual &middot; Systems Management</span>
+    <span>Each board is one file under people/</span>
+  </footer>
+</div>
+
+<!-- ============================================================
+     ROSTER — the only block index.html needs. One entry per seat.
+     An empty {} renders as an unclaimed seat.
+     counts are refreshed by the twice-weekly pass.
+     ============================================================ -->
+<script type="application/json" id="board-data">
+{
+  "updated": "2026-09-17T08:10:00-05:00",
+  "seats": [
+    {
+      "name": "Jeremiah Cargill",
+      "github": "jeremiah9980",
+      "coverage": "Systems Management / CorpIT Svc",
+      "page": "people/jeremiah-cargill.html",
+      "updated": "2026-09-17T08:10:00-05:00",
+      "counts": { "tickets": 3, "changes": 1, "docs": 2 }
+    },
+    {}, {}, {}, {}, {}
+  ]
+}
+</script>
+<script src="assets/board.js"></script>
+</body>
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jeremiah Cargill — Workload Net</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="../assets/board.css">
+</head>
+<body>
+<div class="wrap">
+
+  <header class="masthead">
+    <div class="repo">
+      <a class="crumb" href="../index.html">&larr; SM Workload Net</a>
+      <span class="slash">&middot;</span><span id="handle"></span>
+      <span class="sample-pill" id="samplepill" hidden>Sample data</span>
+    </div>
+    <h1 id="who">&nbsp;</h1>
+    <p class="standfirst">Work found in mail, Teams, meetings and Confluence that has no CS issue, no Freshservice ticket, no change record, or no current documentation behind it. Clear a row by creating the record &mdash; the next pass drops it off this page.</p>
+    <div class="mast-meta">
+      <span>Role <b id="role"></b></span>
+      <span>Coverage <b id="coverage"></b></span>
+      <span>Last pass <b id="asof">&mdash;</b></span>
+    </div>
+  </header>
+
+  <section id="summary">
+    <div class="sec-head">
+      <h2>Where you stand</h2><div class="sec-rule"></div>
+    </div>
+    <div class="strip" id="strip"></div>
+  </section>
+
+  <section id="tickets">
+    <div class="sec-head">
+      <h2>Needs a ticket</h2><div class="sec-rule"></div>
+      <span class="sec-count" id="c-tickets"></span>
+    </div>
+    <p class="sec-note" id="n-tickets"></p>
+    <div class="queue" id="q-tickets"></div>
+  </section>
+
+  <section id="changes">
+    <div class="sec-head">
+      <h2>Should go to CMB</h2><div class="sec-rule"></div>
+      <span class="sec-count" id="c-changes"></span>
+    </div>
+    <p class="sec-note" id="n-changes"></p>
+    <div class="queue" id="q-changes"></div>
+  </section>
+
+  <section id="docs">
+    <div class="sec-head">
+      <h2>Docs going stale</h2><div class="sec-rule"></div>
+      <span class="sec-count" id="c-docs"></span>
+    </div>
+    <p class="sec-note" id="n-docs"></p>
+    <div class="queue" id="q-docs"></div>
+  </section>
+
+  <section id="mypages">
+    <div class="sec-head">
+      <h2>My pages</h2><div class="sec-rule"></div>
+      <span class="sec-count">standing</span>
+    </div>
+    <p class="sec-note">The Claude pages that feed this board. They hold the detail; this page holds only what still has no record behind it.</p>
+    <div class="pagerow" id="pages"></div>
+  </section>
+
+  <footer>
+    <span>Texas Mutual &middot; Systems Management</span>
+    <span>people/jeremiah-cargill.html</span>
+  </footer>
+</div>
+
+<!-- ============================================================
+     YOUR BOARD — the twice-weekly pass rewrites this block.
+     Edit by hand any time; it is plain JSON.
+     sev is implied by the queue, so items only carry content.
+     ============================================================ -->
+<script type="application/json" id="board-data">
+{
+  "name": "Jeremiah Cargill",
+  "github": "jeremiah9980",
+  "role": "Senior Systems Engineer",
+  "coverage": "Systems Management / CorpIT Svc",
+  "updated": "2026-09-17T08:10:00-05:00",
+  "sample": true,
+  "pages": [
+    {
+      "title": "Attention Deck",
+      "cadence": "Daily",
+      "url": "https://claude.ai/code/artifact/ff790d0e-80e4-4f90-8fbf-95e5e7c8cfca",
+      "sources": ["Jira", "Freshservice", "Outlook", "Teams", "Confluence"]
+    },
+    {
+      "title": "Ticket Capture Ledger",
+      "cadence": "Weekdays 16:30 CT",
+      "url": "https://claude.ai/code/artifact/a9177517-f2ec-46f0-b32d-20e3d5a15ae3",
+      "sources": ["Outlook", "Teams", "Calendar", "Jira", "Freshservice"]
+    },
+    {
+      "title": "Systems Management Standing",
+      "cadence": "Standing",
+      "url": "https://claude.ai/code/artifact/9ff04aef-9bb0-49c6-8089-1c02a53186a5",
+      "sources": ["Jira", "Freshservice"]
+    }
+  ],
+  "gaps": {
+    "tickets": [
+      {
+        "title": "LDAP signing enforcement on the remaining domain controllers",
+        "found": "2026-09-15T09:20:00-05:00",
+        "why": "Committed to in a Teams thread and referenced again in two meetings, but no CS issue and no Freshservice ticket exists for the remaining DCs.",
+        "evidence": "Teams · Systems Management · Sep 11 — \"I'll get signing turned on for the last two DCs this sprint.\"",
+        "links": [
+          { "label": "Create in CS", "url": "https://txmutual.atlassian.net/browse/CS" }
+        ]
+      },
+      {
+        "title": "Freshservice task on INC-48213 has no mirrored CS issue",
+        "found": "2026-09-16T16:35:00-05:00",
+        "why": "Task assigned to the System Management group on another group's ticket, so it never appears in the SM ticket queue and nothing in Jira reflects the effort.",
+        "evidence": "Freshservice · task assigned to System Management · open 9 days · parent ticket owned by Network",
+        "links": [
+          { "label": "Open in Freshservice", "url": "https://texasmutual.freshservice.com/a/tickets/48213" },
+          { "label": "Create in CS", "url": "https://txmutual.atlassian.net/browse/CS" }
+        ]
+      },
+      {
+        "title": "Offboarding spot-check findings for three August leavers",
+        "found": "2026-09-16T17:05:00-05:00",
+        "why": "Accounts disabled in AD but still active in a downstream tool. The check ran and produced findings; no ticket carries the remediation.",
+        "evidence": "Deprovision spot-check · 3 accounts · AD disabled, downstream access still present",
+        "links": [
+          { "label": "Create in CS", "url": "https://txmutual.atlassian.net/browse/CS" }
+        ]
+      }
+    ],
+    "changes": [
+      {
+        "title": "Disable NTLM fallback on DC02",
+        "found": "2026-09-15T09:20:00-05:00",
+        "why": "Alters a production authentication path for every domain-joined host. Needs a change record and a back-out plan before it is scheduled.",
+        "evidence": "Pen-test remediation item · auth path · no CHG record found",
+        "links": [
+          { "label": "Draft change request", "url": "https://txmutual.atlassian.net/browse/CS" }
+        ]
+      }
+    ],
+    "docs": [
+      {
+        "title": "ESXi host patching runbook",
+        "found": "2026-09-17T08:10:00-05:00",
+        "why": "Last edited 14 months ago and still describes the vCenter 7 workflow. Two steps no longer match what is running.",
+        "evidence": "Confluence · Systems Management space · last edit Jul 2025"
+      },
+      {
+        "title": "Domain controller hardening baseline",
+        "found": "2026-09-17T08:10:00-05:00",
+        "why": "The LDAP signing and NTLM work above changes the baseline. The page does not mention either setting.",
+        "evidence": "Confluence · Systems Management space · no reference to LDAP signing"
+      }
+    ]
+  }
+}
+</script>
+<script src="../assets/board.js"></script>
+</body>
+</html>
